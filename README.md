@@ -6,3 +6,6 @@ It helps you to create task, edit and delete. Eventhough you can filter it by da
 <li>Then, run project using vs code or etc. Run via terminal and type "php artisan serve".</li>
 <li>You can see the website show up. First of all, create account or register. For the next time, you can login using your created account. If you forgot about your account, there is forgot password button that can help you to reset your password</li>
 <li>Create your task and there is a notification on dashboard if you have task today</li>
+
+## Additional Features
+It will be a reminder send via email but not yet implemented!
