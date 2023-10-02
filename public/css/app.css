@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    height: 100vh;
+    background-color: #f0f1f6;
+}
+
+.register-container, .login-container{
+    border-radius: 25px;
+    box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    height: 100%;
+	max-width: 100%;
+    padding: 0;
+    margin: 6% auto;
+    display: flex;
+    align-items: stretch;
+}
+
+.register-container{
+    width: 768px;
+}
+
+.login-container{
+    width: 568px;
+}
+
+.info-side{
+    position: relative;
+    min-height: 100%;
+    border-radius: 25px;
+    width: 40%;
+    background: #495057;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.info-container{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.info-title{
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.info-desc{
+    color: #99abb4;
+    font-size: 13px;
+    text-transform: capitalize;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px;
+}
+
+.form-side{
+    position: relative;
+    min-height: 100%;
+    width: 60%;
+    padding: 30px 40px;
+}
+
+.form-container{
+    width: 100%;
+}
+
+.form-title{
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.form-desc{
+    color: #99abb4;
+    font-size: 13px;
+    text-transform: capitalize;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin-bottom: 10px;
+}
+
+@media (max-width: 500px) {
+    .info-side{
+        width: 100%;
+        box-shadow: 0;
+        padding-bottom: 10px;
+        /* display: none; */
+    }
+    .info-container{
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+    .form-side{
+        width: 100%;
+        border-radius: 25px;
+        background: #fff;
+        box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+        /* display: none;   */
+    }
+ 
+    .register-container, .login-container{
+        width: 80%;
+        display: block;
+        background: #495057;
+    }
+      
+}
