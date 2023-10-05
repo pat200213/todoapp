@@ -29,7 +29,7 @@
                         $start_time = date('H:i', strtotime($task->start_date));
                     @endphp
                     <input type="date" id='start_date_input' class="form-control" name="start_date" value="{{$start_date}}">
-                    <input type="time" id="start_time-input" class="form-control" step="3600" name="start_time" value="{{$start_time}}">
+                    <input type="time" id="start_time-input" class="form-control" step="any" name="start_time" value="{{$start_time}}">
                 </div>
 
                 <div class="arrow_icon">
@@ -45,7 +45,7 @@
                     @endphp
                     
                     <input type="date" id='end_date_input' class="form-control" name="end_date" value="{{$end_date}}">
-                    <input type="time" id="end_time-input" class="form-control" step="3600" name="end_time" value={{$end_time}}>
+                    <input type="time" id="end_time-input" class="form-control" step="any" name="end_time" value={{$end_time}}>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@
 
                 <div class="form-group mb-0 text-center">
                   
-                    <button type="submit" class="btn btn-primary">Confrim</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
                   
                 </div>
 

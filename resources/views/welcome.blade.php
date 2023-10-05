@@ -33,6 +33,22 @@
             });
         });
         
+        // function markNotif(id, element){
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '{{route("mark_as_seen")}}',
+        //         data: {
+        //             "_token": "{{csrf_token()}}",
+        //             "id_notif": id, 
+        //         },
+        //         success: function(data){
+        //             if(data.message != 'success'){
+        //                 $(element).alert('close');
+        //             }
+                
+        //         }
+        //     });
+        // }
     </script>
 @endsection
 
@@ -48,16 +64,6 @@
         <div class="por-txt">{{$today}}</div>
   
     </div>
-
-    @if($today_task->isNotEmpty() && $show)
-        <div class="sufee-alert alert with-close alert-secondary alert-dismissible fade show">
-            <span class="badge badge-pill badge-secondary">Info</span>
-            You have task today!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
 
     <div class="info">
         <div class="info-body">

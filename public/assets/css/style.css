@@ -184,14 +184,26 @@ Googel Fonts  */
 .flat-color-6 {
   color: #5c6bc0; }
 
-.bg-twitter {
-  background: #1da1f2; }
+.task-success {
+  border-left: 2px solid #66bb6a; }
 
-.bg-facebook {
-  background: #3b5998; }
+.task-primary {
+  border-left: 2px solid #03a9f3; }
 
-.bg-instagram {
-  background: #833ab4; }
+.task-light {
+  border-left: 2px solid #f8f9fa; }
+
+.task-warning {
+  border-left: 2px solid #ffc107; }
+
+.task-danger {
+  border-left: 2px solid #dc3545; }
+
+.task-secondary {
+  border-left: 2px solid #6c757d; }
+
+.task-info {
+  border-left: 2px solid #17a2b8; }
 
 .bg- {
   background: #ef5350; }
@@ -1356,6 +1368,7 @@ header .form-inline {
 }
 
 .date-bar{
+  max-width: 725px;
   width: 100%;
   white-space: nowrap;
   margin-bottom: 15px;
@@ -1411,6 +1424,13 @@ header .form-inline {
 .date-bar ul li .notif{
   border: 1px solid #ef5350;
   background: #ef5350;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+  margin: 5px auto;
+}
+
+.circle{
   border-radius: 50%;
   height: 5px;
   width: 5px;
@@ -1480,11 +1500,9 @@ header .form-inline {
   height: 25px;
   border-radius: 50%;
   border: 1px solid #878787;
-  /* margin: 10px auto; */
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  /* color: #000; */
   background: transparent;
   text-shadow: 0 1px 0 #fff;
   cursor: pointer;
@@ -1493,6 +1511,11 @@ header .form-inline {
 
 #view-task .modal-dialog{
   pointer-events: visible;
+}
+@media (min-width: 500px) and (max-width: 600px){
+  .date-bar{
+    max-width: 485px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1515,6 +1538,10 @@ header .form-inline {
 
   .arrow_icon i{
     transform: rotate(90deg);
+  }
+
+  .date-bar{
+    max-width: 325px;
   }
 }
 
@@ -2477,7 +2504,16 @@ footer.site-footer {
 
 @media (max-width: 1680px) {
   .timeline li {
-    padding: 2px 0; } }
+    padding: 2px 0; } 
+    
+  }
+
+  @media (min-width: 1440px) {
+    .date-bar{
+      max-width: 1040px;
+    }
+  }
+
 @media (max-width: 1368px) {
   .twt-category {
     margin-bottom: 0; }
@@ -2812,8 +2848,6 @@ footer.site-footer {
     padding-bottom: 5px; }
   .right-panel .menutoggle {
     width: 20px; } 
-  
-    
 }
 #cellPaiChart {
   height: 160px; }

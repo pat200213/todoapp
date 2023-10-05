@@ -35,15 +35,15 @@ class Task extends Model
         return $task;
     }
 
-    public static function getTaskByFilter($user, $start, $end, $category, $status){
+    public static function getTaskByFilter($user, $start, $end, $format, $category, $status){
 
         $query = Task::where('user_id', $user);
         
         // conditional clauses
-        $query->when($start != '' && $end != '', function($q) use ($start, $end){
-                    $q->where(function($r) use ($start, $end){                    
-                        $r->whereBetween(DB::raw('DATE_FORMAT(start_date, "%Y-%m-%d")'), [$start, $end])
-                                ->orWhereBetween(DB::raw('DATE_FORMAT(end_date, "%Y-%m-%d")'), [$start, $end]);
+        $query->when($start != '' && $end != '', function($q) use ($start, $end, $format){
+                    $q->where(function($r) use ($start, $end, $format){                    
+                        $r->whereBetween(DB::raw('DATE_FORMAT(start_date, "'.$format.'")'), [$start, $end])
+                                ->orWhereBetween(DB::raw('DATE_FORMAT(end_date, "'.$format.'")'), [$start, $end]);
                     });
                 });
 
@@ -55,7 +55,7 @@ class Task extends Model
             return $q->where('status', $status);
         });        
 
-        $task = $query->select('start_date', 'end_date', 'id', 'title', 'status')
+        $task = $query->select('start_date', 'end_date', 'id', 'title', 'status', 'user_id', 'category_id')
                     ->orderBy('start_date','ASC')
                     ->get();
 
@@ -104,10 +104,16 @@ class Task extends Model
         
                     if($start == $dt || $end == $dt){
                     
+                        $category = DB::table('user_categories')
+                                        ->where('category_id', $tpd->category_id)
+                                        ->where('user_id', $tpd->user_id)
+                                        ->first()->color;
+
                         $data = [
                             'id'=>$tpd->id,
                             'title'=>$tpd->title,
                             'status'=>$tpd->status,
+                            'category'=>$category
                         ];
         
                         array_push($arr_task, $data);

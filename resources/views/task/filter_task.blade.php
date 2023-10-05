@@ -15,7 +15,7 @@
                     <div class="task">
                         @foreach($task['task'] as $t)
                             <div style='position: relative;'>
-                                <label id="dropdown-task-list-{{$t['id']}}" data-toggle="dropdown" aria-haspopup="true">
+                                <label id="dropdown-task-list-{{$t['id']}}" class="task-{{$t['category']}}" data-toggle="dropdown" aria-haspopup="true">
                                     <span>{{$t['title']}}</span>
                                     <i class="{{ $t['status'] == 0 ? 'fa fa-spinner':'fa fa-check'}}"></i>
                                 </label>

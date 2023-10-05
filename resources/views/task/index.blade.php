@@ -75,7 +75,7 @@
                 },
                 success: function(data){
                     hide('dropdown-menu-filter');
-                    // console.log(data.page);
+                    
                     $('#card_task_list').html(data.page);
                 }
             });
@@ -160,6 +160,10 @@
     </div>
     @endif
 
+    @php
+        $minDate = date("Y-m-d");
+    @endphp
+
     <div class="task-list">
         <div class="row">
             <div class="col-lg-9">
@@ -178,12 +182,13 @@
 
     <div class="task-list">
 
-        <span class="task-list-filter">Filter</span>
+       
         <div class="btn-group">
             <button id='button-menu-filter' class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 
                 <i class="fa fa-filter"></i>
+                <span class="task-list-filter">Filter</span>
             </button>
             
             <div id='dropdown-menu-filter' class="dropdown-menu px-4 py-3">
@@ -283,7 +288,7 @@
                         <span class="year">{{$year}}</span>
                         
                         @if(!empty($arr_all_task))
-                            <span class="notif bg-"></span>
+                            <span class="notif"></span>
                         @endif
                     </li>
                 </ul>
@@ -316,7 +321,7 @@
                                         <div class="task">
                                             @foreach($task['task'] as $t)
                                                 <div style='position: relative;'>
-                                                    <label id="dropdown-task-list-{{$t['id']}}" data-toggle="dropdown" aria-haspopup="true">
+                                                    <label id="dropdown-task-list-{{$t['id']}}" class="task-{{$t['category']}}" data-toggle="dropdown" aria-haspopup="true">
                                                         <span>{{$t['title']}}</span>
                                                         <i class="{{ $t['status'] == 0 ? 'fa fa-spinner':'fa fa-check'}}"></i>
                                                     </label>
@@ -372,8 +377,8 @@
                                 <div class="start_date">
                                     <label for="cc-payment" class="control-label mb-1">Start Date</label>
                                         
-                                    <input type="date" id='start_date_input' class="form-control" name="start_date">
-                                    <input type="time" id="start_time-input" class="form-control" step="3600" name="start_time">
+                                    <input type="date" id='start_date_input' class="form-control" name="start_date" min="{{$minDate}}">
+                                    <input type="time" id="start_time-input" class="form-control" step="any" name="start_time">
                                 </div>
 
                                 <div class="arrow_icon">
@@ -382,8 +387,8 @@
                         
                                 <div class="end_date">
                                     <label for="cc-payment" class="control-label mb-1">End Date</label>
-                                    <input type="date" id='end_date_input' class="form-control" name="end_date">
-                                    <input type="time" id="end_time-input" class="form-control" step="3600" name="end_time">
+                                    <input type="date" id='end_date_input' class="form-control" name="end_date" min={{$minDate}}>
+                                    <input type="time" id="end_time-input" class="form-control" step="any" name="end_time">
                                 </div>
                             </div>
                         </div>

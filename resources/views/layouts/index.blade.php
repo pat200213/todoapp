@@ -124,7 +124,48 @@
                     
                 </div>
             </div>
-           
+           <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span id="unread_notif" class="count bg-danger">{{ count(Auth::user()->unreadNotifications) }}</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                @if(count(Auth::user()->notifications) > 0)
+                                    @foreach(Auth::user()->notifications->take(10) as $notif)
+                                    
+                                        <a class="dropdown-item media" href="#">
+                                            
+                                            <span class="circle {{ (!$notif->read_at) ? 'bg-danger':'bg-success'}}"></span>
+
+                                            <div class="message media-body">
+                                                <span class="name float-left">{{$notif->data['title']}}</span>
+
+                                                <span class="time float-right">
+                                                    <i class="fa fa-clock-o"></i> 
+                                                    {{$notif->data['time']}}
+                                                </span>
+
+                                            </div>
+                                        </a>
+                                    @endforeach
+
+                                    <button type="button" class="por-txt btn btn-link" onclick="markAllNotifications()">
+                                        Mark All As Read
+                                    </button>
+                                @else
+                                    <div class="dropdown-item media">
+                                        <span class="por-txt">No Notification Yet!</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+           </div>
         </header>
 
         <!-- /#header -->
@@ -231,6 +272,23 @@
                     $('#list-task-detail').html(data.page);
                    
                 },
+            });
+        }
+
+        function markAllNotifications(){
+            $.ajax({
+                type: "POST",
+                url: "{{ route('mark_as_seen') }}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                },
+                success: function(data){
+                    $('#unread_notif').html('0');
+                    $('.circle').each(function(){
+                        $(this).removeClass('bg-danger');
+                        $(this).addClass('bg-success');
+                    });
+                }
             });
         }
 

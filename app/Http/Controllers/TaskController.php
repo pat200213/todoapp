@@ -24,7 +24,7 @@ class TaskController extends Controller
 
         // $task_list = Task::getTask('all', $user ,$today->format('d/M/Y'), "%d/%b/%Y");
        
-        $task_list = Task::getTaskByFilter($user, $today->format('Y-m-d'), $today->format('Y-m-d'), '', '');
+        $task_list = Task::getTaskByFilter($user, $today->format('Y-m-d'), $today->format('Y-m-d'), "%Y-%m-%d", '', '');
      
         $task = Task::renderTaskPerDate($task_list);
         $arr_all_task = $task['task'];
@@ -180,7 +180,7 @@ class TaskController extends Controller
         $status = $request->status;
        
         // get spesific task
-        $task_list = Task::getTaskByFilter($user_id, $start, $end, $category, $status);
+        $task_list = Task::getTaskByFilter($user_id, $start, $end, "%Y-%m-%d", $category, $status);
 
         // render the task group by date
         $task = Task::renderTaskPerDate($task_list);
@@ -209,7 +209,7 @@ class TaskController extends Controller
         $category = $request->category;
         $status = $request->status;
        
-        $task_list = Task::getTaskByFilter($user_id, $selected_date, $selected_date, $category, $status);
+        $task_list = Task::getTaskByFilter($user_id, $selected_date, $selected_date, "%Y-%m-%d", $category, $status);
 
         $task = Task::renderTaskPerDate($task_list);
         $arr_all_task = $task['task'];

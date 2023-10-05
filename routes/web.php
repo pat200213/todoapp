@@ -22,6 +22,7 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::post('/markAsRead', 'HomeController@markNotif')->name('mark_as_seen');
     
     Route::resource('/task', 'TaskController');
     Route::post('/task/complete', 'TaskController@completeTask')->name('task.update.status');
