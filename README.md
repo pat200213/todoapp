@@ -8,4 +8,4 @@ It helps you to create task, edit and delete. Eventhough you can filter it by da
 <li>Create your task and there is a notification on dashboard if you have task today</li>
 
 ## Additional Features
-It will be a reminder send via email but not yet implemented!
+It has notification to remind all registered users about their task send via email will be set schedule daily and on website will be set schedule every minute
