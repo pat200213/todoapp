@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 
-class TaskController extends Controller
+class TaskController extends ParentController
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class TaskController extends Controller
         $task = Task::renderTaskPerDate($task_list);
         $arr_all_task = $task['task'];
 
-        return view('task.index', [
+        return parent::view('task.index', [
                                     'category_list' => $category_list,
                                     'arr_all_task' => $arr_all_task,
                                     'today' => $today->format('d-M-Y'),

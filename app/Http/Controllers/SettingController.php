@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\DB;
 
-class SettingController extends Controller
+class SettingController extends ParentController
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class SettingController extends Controller
         $reminder = explode(":", $reminder);
         $minute = $reminder[0];
 
-        return view('settings.index', compact('category_list', 'list_color', 'email_status', 'minute'));
+        return parent::view('settings.index', compact('category_list', 'list_color', 'email_status', 'minute'));
     }
 
     /**
